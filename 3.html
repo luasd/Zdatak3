@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 100%;
+            display: grid;
+            height: 100vh;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            grid-template-areas:
+                "aside aside aside aside"
+                " prva druga treca cetvrta"
+                " footer footer footer footer";
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+            transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
+        }
+
+        .container>div {
+            position: relative;
+        }
+
+        aside {
+            grid-area: aside;
+            background-color: aqua;
+            transition: background-color 0.5s ease-in-out;
+        }
+
+        aside:hover {
+            background-color: lightblue;
+        }
+
+        ul {
+            list-style: none;
+            background-color: aliceblue;
+            text-align: center;
+        }
+
+        ul li {
+            display: inline-block;
+            position: relative;
+        }
+
+        ul li a {
+            display: block;
+            padding: 20px 25px;
+            font-size: 16px;
+            color: black;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        ul li ul.dropdown li {
+            display: block;
+            background: aqua;
+            margin: 2px 0px;
+        }
+
+        ul li ul.dropdown {
+            width: auto;
+            background: aqua;
+            position: absolute;
+            z-index: 999;
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        ul li a:hover {
+            background: turquoise;
+        }
+
+        ul li:hover ul.dropdown {
+            display: block;
+        }
+
+        .prva {
+            grid-area: prva;
+            animation: slideIn 1s ease-out;
+        }
+
+        .druga {
+            grid-area: druga;
+            animation: slideIn 1.5s ease-out;
+        }
+
+        .treca {
+            grid-area: treca;
+            animation: slideIn 2s ease-out;
+        }
+
+        .cetvrta {
+            grid-area: cetvrta;
+            animation: slideIn 2.5s ease-out;
+        }
+
+        footer {
+            grid-area: footer;
+            background-color: lightcoral;
+            animation: fadeFooter 2s ease-in;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeFooter {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .wrapper {
+            width: 100%;
+            position: relative;
+            padding: 1%;
+        }
+
+        .wrapper img {
+            position: relative;
+            width: 100%;
+        }
+
+        .wrapper img:hover {
+            transform: scale(1.1);
+            filter: brightness(1.2);
+        }
+
+        .wrapper h2 {
+            position: absolute;
+            bottom: 100px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            background-color: aqua;
+            width: 98%;
+            margin-left: 1%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .wrapper:hover h2 {
+            opacity: 1;
+        }
+
+        aside,
+        footer,
+        .prva,
+        .druga,
+        .treca,
+        .cetvrta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 800px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(4, 1fr);
+                grid-template-areas:
+                    "aside aside"
+                    "prva druga"
+                    "treca cetvrta"
+                    "footer footer";
+            }
+        }
+
+        @media (max-width: 450px) {
+            .container {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(6, 1fr);
+                grid-template-areas:
+                    "aside "
+                    "prva"
+                    "druga"
+                    "treca"
+                    "cetvrta"
+                    "footer";
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <aside>
+            <ul>
+                <li><a href="#">Naslovna</a></li>
+                <li><a href="#">O nama</a></li>
+                <li><a href="#">Likovi &#x25BE;</a>
+                    <ul class="dropdown">
+                        <li><a href="#">Spužva Bob</a></li>
+                        <li><a href="#">Kalamarko</a></li>
+                        <li><a href="#">Patrik</a></li>
+                        <li><a href="#">Plankton</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
+        </aside>
+
+        <section class="prva">
+            <div class="wrapper">
+                <img src="slike/rod.jfif" alt="">
+                <h2>Spužva Bob</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, error?</p>
+            </div>
+        </section>
+        <section class="druga">
+            <div class="wrapper">
+                <img src="slike/kala.webp" alt="">
+                <h2>Kalamarko</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, error?</p>
+            </div>
+        </section>
+        <section class="treca">
+            <div class="wrapper">
+                <img src="slike/pat.jpg" alt="">
+                <h2>Patrik</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, error?</p>
+            </div>
+        </section>
+        <section class="cetvrta">
+            <div class="wrapper">
+                <img src="slike/p.png" alt="">
+                <h2>Plankton</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, error?</p>
+            </div>
+        </section>
+        <footer>
+            <h2>footer</h2>
+        </footer>
+    </div>
+</body>
+
+</html>
